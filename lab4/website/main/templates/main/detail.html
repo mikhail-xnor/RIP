@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ memory.title }}
+{% endblock %}
+
+{% block title2 %}
+{{ memory.title }}
+{% endblock %}
+
+{% block navigation %}
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'index' %}">Главная</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <table class="alert alert-warning mt-2" border="1 solid black">
+        <tr>
+            <th>Название</th>
+            <th>Иконка</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td align="center">{{memory.title}}</td>
+            <td align="center">
+                {% if memory.id == 1 %}
+                    <img src="{% static 'RAM.png' %}", height='400'>
+                {% elif memory.id == 2 %}
+                    <img src="{% static 'ROM.png' %}", height='400'>
+                {% elif memory.id == 3 %}
+                    <img src="{% static 'HDD.png' %}", height='400'>
+                {% elif memory.id == 4 %}
+                    <img src="{% static 'cache.png' %}", height='400'>
+                {% else %}
+                    <img src="", alt="картинка">
+                {% endif %}
+            </td>
+            <td align='justify'>
+                {{ memory.info }}
+            </td>
+        </tr>
+    </table>
+{% endblock %}

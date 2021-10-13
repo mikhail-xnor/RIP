@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block title2 %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    {% if memory %}
+        {% for el in memory %}
+            <div class="alert alert-warning mt-2 mx-auto text-center">
+                <a class="alert-warning mt-2" href="{% url 'about' el.id %}">{{ el.title }}</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Empty!</p>
+    {% endif %}
+{% endblock %}
