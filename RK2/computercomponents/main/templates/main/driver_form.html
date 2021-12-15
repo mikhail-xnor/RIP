@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Изменение
+{% endblock %}
+
+{% block content %}
+
+<h2>Параметры записи</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <br>
+    <input type="submit" value="Сохранить" />
+</form>
+
+{{class_text.name}}
+
+{% endblock %}

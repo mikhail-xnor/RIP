@@ -1,0 +1,17 @@
+{% extends 'computercomponents/base.html' %}
+
+
+{% block title %}
+Главная
+{% endblock %}
+
+
+{% block content %}
+<h2>Подключенная база данных содержит следующие сущности:</h2>
+<ol>
+    {% for model_id, model_name in models_dict.items %}
+    <li><a href="{% url 'list' model_name %}">{{ model_name }}</a></li>
+    <br>
+    {% endfor %}
+</ol>
+{% endblock %}

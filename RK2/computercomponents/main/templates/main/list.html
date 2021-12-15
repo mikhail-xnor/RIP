@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{entity}}
+{% endblock %}
+
+{% block content %}
+<h2>Сущность <i>{{entity}}</i></h2>
+
+{% if entity == 'Driver' %}
+<a href='/driver/create'>Добавить элемент</a>
+{% endif %}
+
+{% if entity == 'CarPark' %}
+<a href='/carpark/create'>Добавить элемент</a>
+{% endif %}
+
+<p>Список элементов:</p>
+<ul>
+    {% for elem in objects %}
+    <hr>
+        <li>
+            {% if entity == 'Driver' %}
+                ФИО: {{elem.fio}}, зарплата: {{elem.sal}}<br>
+                <a href='{% url "driver_update" elem.id %}'>Изменить</a>
+                <a href='{% url "driver_delete" elem.id %}'>Удалить</a>
+            {% endif %}
+
+            {% if entity == 'CarPark' %}
+                Наименование: {{elem.name}} <br>
+                <a href='{% url "park_update" elem.id %}'>Изменить</a>
+                <a href='{% url "park_delete" elem.id %}'>Удалить</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+    <hr>
+</ul>
+{% endblock %}

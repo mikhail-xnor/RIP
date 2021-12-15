@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Водители
+{% endblock %}
+
+{% block content %}
+<h2>Список всех водителей:</h2>
+<ul>
+    {% for driver in drivers %}
+        <hr>
+        <li>
+            <div>
+                ФИО: {{driver.fio}} <br>
+                Зарплата: {{driver.sal}} р. <br>
+                Автопарк: {{driver.park_id}}
+            </div>
+        </li>
+    {% endfor %}
+    <hr>
+</ul>
+<i>Время формирования отчёта: </i>{{date}}
+{% endblock %}
