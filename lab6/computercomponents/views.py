@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from .models import *
 from django.apps import apps
 
 from rest_framework import viewsets
-from computercomponents.serializers import CompSerializer
+from computercomponents.serializers import *
 from computercomponents.models import Cpu
 
 def index(request):
@@ -24,11 +23,38 @@ def list(request, model_name):
     return render(request, 'computercomponents/list.html', params)
 
 
-class ComputeCompViewSet(viewsets.ModelViewSet):
+class CpuViewSet(viewsets.ModelViewSet):
     models = apps.get_app_config('computercomponents').get_models()
     model = ''
     for elem in models:
         if elem._meta.db_table == 'CPU':
             model = elem
     queryset = model.objects.all()
-    serializer_class = CompSerializer
+    serializer_class = CpuSerializer
+
+class DiskstorageViewSet(viewsets.ModelViewSet):
+    models = apps.get_app_config('computercomponents').get_models()
+    model = ''
+    for elem in models:
+        if elem._meta.db_table == 'DiskStorage':
+            model = elem
+    queryset = model.objects.all()
+    serializer_class = DiskstorageSerializer
+
+class RamViewSet(viewsets.ModelViewSet):
+    models = apps.get_app_config('computercomponents').get_models()
+    model = ''
+    for elem in models:
+        if elem._meta.db_table == 'RAM':
+            model = elem
+    queryset = model.objects.all()
+    serializer_class = RamSerializer
+
+class HardwareViewSet(viewsets.ModelViewSet):
+    models = apps.get_app_config('computercomponents').get_models()
+    model = ''
+    for elem in models:
+        if elem._meta.db_table == 'Hardware':
+            model = elem
+    queryset = model.objects.all()
+    serializer_class = HardwareSerializer

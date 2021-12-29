@@ -4,7 +4,10 @@ from django.urls import include, path
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'computercomp', comp_views.ComputeCompViewSet)
+router.register(r'cpu', comp_views.CpuViewSet)
+router.register(r'disk', comp_views.DiskstorageViewSet)
+router.register(r'ram', comp_views.RamViewSet)
+router.register(r'hardware', comp_views.HardwareViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),

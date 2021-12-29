@@ -4,11 +4,11 @@ class Urls {
     }
 
     cpus() {
-        return `${this.url}computercomp/`
+        return `${this.url}cpu/`
     }
 
     cpu(id) {
-        return `${this.url}computercomp/${id}/`
+        return `${this.url}cpu/${id}/`
     }
 }
 
